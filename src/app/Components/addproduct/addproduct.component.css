@@ -1,0 +1,16 @@
+button:disabled {
+  cursor: not-allowed;
+}
+
+input:focus {
+  box-shadow: none !important ;
+}
+
+input.ng-touched.ng-invalid{
+  border-color: red;
+}
+
+input.ng-touched.ng-valid{
+  border: 2px solid green !important;
+  /* border-color: green; */
+}

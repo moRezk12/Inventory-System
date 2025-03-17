@@ -1,0 +1,19 @@
+.navbar {
+  margin-bottom: 20px;
+}
+
+/* Custom Active Link */
+.active-link {
+  font-weight: bold;
+  text-decoration: underline;
+  color: white !important;
+}
+
+
+.nav-link:hover {
+  color: #f8f9fa !important;
+}
+
+li a {
+  cursor: pointer  ;
+}

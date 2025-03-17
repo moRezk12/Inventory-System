@@ -1,0 +1,49 @@
+<div class="container mt-3">
+  <h2 class="text-center mb-4">Add New Product</h2>
+
+  <div class="card p-4 shadow" >
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()" >
+      <div class="mb-3">
+        <label class="form-label">Product Name</label>
+        <input type="text" class="form-control" formControlName="name">
+        <div *ngIf="productForm.get('name')?.touched && productForm.get('name')?.invalid " class="text-danger">
+          <div *ngIf=" productForm.get('name')?.errors?.['required']  " class="text-danger">
+            Product name is required.
+          </div>
+          <div *ngIf=" productForm.get('name')?.errors?.['minlength'] && productForm.get('name')?.touched "  class="text-danger">
+            Product name must be at least 3 characters.
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <input type="text" class="form-control" formControlName="description">
+        <div *ngIf="productForm.get('description')?.touched && productForm.get('description')?.invalid " class="text-danger">
+          <div *ngIf=" productForm.get('description')?.errors?.['required']  " class="text-danger">
+            Description is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Quantity</label>
+        <input type="number" class="form-control" formControlName="quantity">
+        <div *ngIf="productForm.get('quantity')?.touched && productForm.get('quantity')?.invalid" class="text-danger">
+          Quantity must be 0 or more.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Price </label>
+        <input type="number" class="form-control" formControlName="price">
+        <div *ngIf="(productForm.get('price')?.touched || productForm.get('price')?.dirty ) && productForm.get('price')?.invalid" class="text-danger">
+          Price must be 0 or more.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 my-2 " [disabled]="productForm.invalid">Add Product</button>
+    </form>
+    <button class="btn btn-secondary " (click)="cancelUpdate()" >Cancel</button>
+  </div>
+</div>

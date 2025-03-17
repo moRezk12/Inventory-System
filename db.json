@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Laptop",
+      "description": "Dell Inspiron 15",
+      "quantity": 50,
+      "price": 750
+    },
+    {
+      "id": "aeb5",
+      "name": "Laptop",
+      "description": "HP",
+      "quantity": 2333,
+      "price": 233333
+    },
+    {
+      "id": "3279",
+      "name": "Mobile",
+      "description": "Sumsung",
+      "quantity": 345,
+      "price": 5454
+    },
+    {
+      "id": "ebef",
+      "name": "Laptop",
+      "description": "Dell",
+      "quantity": 500,
+      "price": 25000
+    }
+  ]
+}

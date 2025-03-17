@@ -1,0 +1,100 @@
+<div class="container mt-3 position-relative ">
+  <h2 class="text-center mb-4">Inventory Management System</h2>
+
+  <div class="mb-3">
+    <input type="text" class="form-control" [(ngModel)]="searchProduct" (input)="searchProducts()" placeholder="Search products by name...">
+  </div>
+
+  <div class="mb-3 text-end">
+    <a routerLink="/addproduct" class="btn btn-primary">Add Product</a>
+  </div>
+
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr class="text-center" >
+        <th> Name</th>
+        <th class="d-none d-md-table-cell" >Description</th>
+        <th class="d-none d-md-table-cell" >Quantity</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let product of filteredProducts">
+        <td class="text-break  " >{{ product.name }}</td>
+        <td class="d-none d-md-table-cell" >{{ product.description }}</td>
+        <td class="d-none d-md-table-cell" >{{ product.quantity }}</td>
+        <td>{{ product.price }}</td>
+        <td class="" >
+          <button class="btn btn-sm btn-info me-2  d-table-cell d-md-none" (click)="openShowModal(product)"  >Show</button>
+          <button class="btn btn-sm btn-warning me-2" (click)="openEditModal(product)" >Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- Edit Product Modal -->
+
+<div *ngIf="isPopupOpen"
+    class="position-fixed top-0 start-0  d-flex justify-content-center align-items-center"
+    style="z-index: 1000000; height: 100vh; width: 100vw;">
+
+  <div class="position-fixed top-0 start-0  bg-black opacity-50" style="height: 100vh; width: 100vw;"></div>
+  <div class="modal-content bg-dark text-white m-2 rounded p-4">
+    <form [formGroup]="editForm" (ngSubmit)="onUpdateProduct()">
+      <div class="d-flex justify-content-between align-items-center mb-4 ">
+        <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
+        <button class="btn-close btn-close-white  "  (click)="closePopup()"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3">
+          <label>Product Name</label>
+          <input type="text" class="form-control my-2 " formControlName="name" [readOnly]="show"  >
+          <div *ngIf="editForm.get('name')?.touched && editForm.get('name')?.invalid " class="text-danger">
+            <div *ngIf=" editForm.get('name')?.errors?.['required']  " class="text-danger">
+              Product name is required.
+            </div>
+            <div *ngIf=" editForm.get('name')?.errors?.['minlength'] && editForm.get('name')?.touched "  class="text-danger">
+              Product name must be at least 3 characters.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label>Description</label>
+          <input type="text" class="form-control my-2 " formControlName="description" [readOnly]="show" >
+          <div *ngIf="editForm.get('description')?.touched && editForm.get('description')?.invalid " class="text-danger">
+            <div *ngIf=" editForm.get('description')?.errors?.['required']  " class="text-danger">
+              Description is required.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label>Quantity</label>
+          <input type="number" class="form-control my-2 " formControlName="quantity" [readOnly]="show" >
+          <div *ngIf="editForm.get('quantity')?.touched && editForm.get('quantity')?.invalid" class="text-danger">
+            Quantity must be 0 or more.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label>Price</label>
+          <input type="number" class="form-control my-2 " formControlName="price" [readOnly]="show" >
+          <div *ngIf="(editForm.get('price')?.touched || editForm.get('price')?.dirty ) && editForm.get('price')?.invalid" class="text-danger">
+            Price must be 0 or more.
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer " [ngClass]="{ 'd-none': show === true }" >
+        <button type="button" class="btn btn-secondary me-3 " (click)="closePopup()">Cancel</button>
+        <button type="submit" class="btn btn-primary" [disabled]="editForm.invalid">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

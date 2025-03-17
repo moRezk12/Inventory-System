@@ -1,0 +1,52 @@
+
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand text-white" routerLink="">Inventory Management System</a>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white  " routerLink="" routerLinkActive="active-link" >Product List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/addproduct" routerLinkActive="active-link">Add Product</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+<nav class=" bg-dark">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center p-3 ">
+    <a class=" text-white text-decoration-none fs-4" routerLink="/">Inventory Management System</a>
+
+    <!-- Toggle Button for Mobile -->
+    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+
+    <!-- Collapsible Menu -->
+    <div class="">
+      <ul class="d-flex align-items-center p-0 m-0 mt-3 mt-md-0  fs-5 ">
+        <li class="me-4">
+          <a class="nav-link text-white" routerLink="/" routerLinkActive="active-link">Product List</a>
+        </li>
+        <li class="">
+          <a class="nav-link text-white" routerLink="/addproduct" routerLinkActive="active-link">Add Product</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<router-outlet></router-outlet>
